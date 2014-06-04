@@ -22,6 +22,11 @@ The idea is to have a common place to look for and to enforce the same code stan
 >The only thing worse than other people’s code, is your own code 6 months later.  
 ><small>– Zeh Fernando</small>
 
+&nbsp;
+
+>Part of being a good steward to a successful project is realizing that writing code for yourself is a Bad Idea™. If thousands of people are using your code, then write your code for maximum clarity, not your personal preference of how to get clever within the spec.
+><small>- Idan Gazit</small>
+
 ## Guidelines
 * [General Rules](#)
 * [JavaScript](#)
