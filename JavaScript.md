@@ -261,7 +261,7 @@ var baz = {
 
 ### Object keys
 
-* Use camelCase when naming object keys
+* Use :camel: camelCase when naming object keys
 
 ```js
 // Bad
