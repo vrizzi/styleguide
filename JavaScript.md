@@ -2,10 +2,6 @@
 
 ## Table of contents
 
-# JavaScript code styleguide
-
-## Table of contents
-
 * [Semicolons](#semicolons)
 * [Strict mode](#strict-mode)
 * [Context and closures](#context-and-closures)
