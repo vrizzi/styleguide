@@ -1,7 +1,5 @@
 ![logo](logo.png)
 
----
-
 ## Introduction
 
 This repository holds the standards we use on the front-end code of Magnetis.
