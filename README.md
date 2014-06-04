@@ -1,6 +1,7 @@
 # Magnetis Front-End Styleguide
 
 ## Introduction
+
 This repository holds the standards we use on the front-end code of Magnetis.
 The idea is to have a common place to look for and to enforce the same code standards throughout team members.
 
@@ -28,12 +29,11 @@ The idea is to have a common place to look for and to enforce the same code stan
 ><small>- Idan Gazit</small>
 
 ## Guidelines
-* [General Rules](#)
+
 * [JavaScript](#)
-* [Markup](#)
 * [Stylesheet](#)
+* [Markup](#)
 
 ## Discussion
-This is a living project so you don't need to agree with everything, in fact, you can disagree with everything proposed on the documents. Feel free to open issues in order to discuss code style changes and whatnot.
 
-## Links
+This is a living project so you don't need to agree with everything, in fact, you can disagree with everything proposed on the documents. Feel free to [open an issue](/issues) to discuss changes and whatnot.
