@@ -1,4 +1,6 @@
-# Magnetis Front-End Styleguide
+![logo](logo.png)
+
+---
 
 ## Introduction
 
