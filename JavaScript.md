@@ -960,7 +960,7 @@ object.hasOwnProperty(prop);
 
 * Do not start closures with semi-colons.
 
-* We encourage you to log important app states always when possible. For that you should follow the format of module/class, then method, then the message or value that you want to log.
+* We encourage you to log important app states always when possible. For that you should follow the format of module/class, then method, then the message or value that you want to log separated by double colons `::`.
 
 ```js
 function FooBar() {
@@ -979,9 +979,9 @@ FooBar.prototype.doStuff(value) {
 
 ### jQuery
 
-	* Cache jQuery lookups always when possible.
-	* Prefer `remove()` over `empty()`.
-	* Always favor functional and utility functions of jQuery over Underscore.
+* Cache jQuery lookups always when possible.
+* Prefer `remove()` over `empty()`.
+* Always favor functional and utility functions of jQuery over Underscore.
 
 **[⬆ back to top](#table-of-contents)**
 
