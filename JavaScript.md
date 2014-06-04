@@ -56,6 +56,8 @@
     * [Global variables](#global-variables)
     * [Local variables](#local-variables)
     * [Property](#property)
+* [Best practices](#best-practices)
+	* [jQuery](#jquery) 
 * [Links](#links)
   * [Styleguides](#styleguides)
   * [Articles and blog posts](#articles-and-blog-posts)
@@ -597,6 +599,21 @@ function toggleColorOnClick() {
 }
 ```
 
+### Naming element selectors
+
+* When naming class selectors of DOM elements that will have any kind of behavior, add `js` prefix to the name of your component separating words using an hyphen `-`.
+
+```html
+<ul class="js-navigation-menu">
+  <li>Foo</li>
+  <li>Bar</li>
+</ul>
+```
+
+```js
+var menu = $('.js-navigation-menu');
+```
+
 **[⬆ back to top](#table-of-contents)**
 
 ## Properties
@@ -936,6 +953,35 @@ object.prop === undefined;
 object.hasOwnProperty(prop);
 'prop' in object;
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+## Best practices
+
+* Do not start closures with semi-colons.
+
+* We encourage you to log important app states always when possible. For that you should follow the format of module/class, then method, then the message or value that you want to log.
+
+```js
+function FooBar() {
+}
+
+// Bad
+FooBar.prototype.doStuff(value) {
+  console.log('do stuff' + value);
+}
+
+// Good
+FooBar.prototype.doStuff(value) {
+  console.log('FooBar :: doStuff() ::', value);
+}
+```
+
+### jQuery
+
+	* Cache jQuery lookups always when possible.
+	* Prefer `remove()` over `empty()`.
+	* Always favor functional and utility functions of jQuery over Underscore.
 
 **[⬆ back to top](#table-of-contents)**
 
