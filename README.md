@@ -36,4 +36,6 @@ The idea is to have a common place to look for and to enforce the same code stan
 
 ## Discussion
 
+:deciduous_tree: :smile: :sunny: :sunglasses: :tophat:
+
 This is a living project so you don't need to agree with everything, in fact, you can disagree with everything proposed on the documents. Feel free to [open an issue](../../issues) to discuss changes and whatnot.
