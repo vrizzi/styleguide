@@ -8,11 +8,84 @@
 * We use Sass as a pre-processor of our CSS code. You should take some time to understand it as well.
 * We use Compass as a Sass framework to help with things like vendor prefixes and spritesheet generation. Please, take some time to read its documentation.
 
+## Inline images
+
+* Inline images are only allowed when they're less than 1KB and are present only once on the code.
+
+## `!important`
+
+* If you can't explain why an `!important` is important, it's probably not important.
+
 ## Spacing
+
+
 
 ## Blocks
 
 ## Comments
+
+* Use `//` instead of `/* */` when documenting your code. When compiled to CSS it wont show up.
+
+```scss
+// Bad
+/*
+once
+upon
+a
+time
+*/
+
+// Good
+// once
+// upon
+// a
+// time
+```
+
+
+## Quotes
+
+* Always use double quotes.
+
+```scss
+// Bad
+.selector:after {
+  content: 'Foo Bar';
+}
+
+// Good
+.selector:before {
+  content: "Lorem Ipsum";
+}
+```
+
+### Attribute values
+
+* Quote attribute values in selectors.
+
+```scss
+// Bad
+input[type=radio] {
+  display: none;
+}
+
+// Good
+input[type="number"] {
+  opacity: 1;
+}
+```
+
+### `@import`
+
+* Always wrap imported modules with double quotes `"`.
+
+```scss
+// Bad
+@import helpers/foo;
+
+// Good
+@import "helpers/bar";
+```
 
 ## Nesting
 
@@ -100,7 +173,12 @@
 
 ### Order
 
-* Always place `@extend` and `@include` should stay at the top of the class definition. Also, you should add a line break before the last `@extend` or `@include`.
+* The order of declaration should look like:
+	1. `@extend` 
+	2. `@import`
+	3. Variable definitions
+	4. Functions, placeholders and mixins
+	5. Other rules
 
 ```scss
 // Bad
@@ -119,17 +197,14 @@
   border: 3px solid seagreen;
   background: fuchsia;
 }
-``` 
 
-* `@extend` should come before `@include`.
-
-```scss
 // Bad
 .square {
   @include border-radius(3px);
   @extend %shape-base;
   @include box-sizing(border-box);
   @extend %square-base;
+  // Other rules
 }
 
 // Good
@@ -138,8 +213,43 @@
   @extend %square-base;
   @include border-radius(3px);
   @include box-sizing(border-box);
+  
+  // Other rules
 }
-```
+
+// Bad
+.selector {
+  border: 0;
+  @include font-smoothing;
+  @mixin inner-mixin {
+    // ...
+  }
+  @extend centered-content;
+  %inner-placeholder {
+    // ...
+  }
+  $color: red;
+}
+
+// Good
+.selector {
+  @extend centered-content;
+  @include font-smoothing;
+  
+  $color: red;
+  
+  %inner-placeholder {
+    // ...
+  }
+  
+  @mixin inner-mixin {
+    // ...
+  }
+  
+  border: 1px solid gray;
+}
+
+``` 
 
 ### Variable definition
 
@@ -338,6 +448,45 @@ $DEFAULT_BACKGROUND: fuchsia !default;
   margin: 0 auto;
 }
 ```
+
+### Selector structure
+
+* Add a line break after `@extend`/`@include`, variables, functions/placeholders/mixins and other rules.
+
+```scss
+// Bad
+.selector {
+  @extend centered-content;
+  @include font-smoothing;
+  $color: red;
+  %inner-placeholder {
+    // ...
+  }
+  @mixin inner-mixin {
+    // ...
+  }
+  border: 1px solid gray;
+}
+
+// Good
+.selector {
+  @extend centered-content;
+  @include font-smoothing;
+  
+  $color: red;
+  
+  %inner-placeholder {
+    // ...
+  }
+  
+  @mixin inner-mixin {
+    // ...
+  }
+  
+  border: 1px solid gray;
+}
+```
+
 
 ## Best practices
 
