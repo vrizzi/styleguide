@@ -16,30 +16,91 @@
 
 * If you can't explain why an `!important` is important, it's probably not important.
 
-## Spacing
+## Pseudo elements
 
-
-
-## Blocks
-
-## Comments
-
-* Use `//` instead of `/* */` when documenting your code. When compiled to CSS it wont show up.
+* Pseudo elements should be accessed by using a single colon `:`. Do not use double colons `::`.
 
 ```scss
 // Bad
-/*
-once
-upon
-a
-time
-*/
+.button::before {
+  outline: 1px solid;
+}
 
 // Good
-// once
-// upon
-// a
-// time
+.button:after {
+  background: fuchsia;
+}
+```
+
+## Spacing
+
+* Always add a whitespace after property names.
+
+```scss
+// Bad
+```
+
+
+## Comments
+
+* The comment structure should look like the following:
+
+```scss
+/* ==========================================================================
+   Component name
+   ========================================================================== */
+
+/**
+ * Some description about my component.
+ * Always try to be very concise and straightforward!
+ */
+
+.component {
+  // ...
+}
+
+
+/* Sub component name
+   ========================================================================== */
+
+/**
+ * Some description about my sub component.
+ */
+
+.component__sub-component {
+}
+
+/**
+ * Modifier: Description of component modifier.
+ */
+
+.component--modifier {
+  // ...
+}
+
+/**
+ * Function: Description of component function.
+ */
+ 
+@function component-function() {
+  // ...
+}
+
+/**
+ * Placeholder: Description of component placeholder.
+ */
+ 
+%component-placeholder {
+  // ...
+}
+
+/**
+ * Mixin: Description of component mixin.
+ */
+ 
+@mixin component-mixin {
+  // ...
+}
 ```
 
 
