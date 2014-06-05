@@ -10,8 +10,9 @@
 
 ## Spacing
 
-## Comments
+## Blocks
 
+## Comments
 
 ## Nesting
 
@@ -53,12 +54,24 @@
 ```
 ## Specificity
 
-* Avoid being too specific when naming a class. Besides of being difficult to read it will likely turn into a mess.
+* Avoid being too specific when naming a class. Besides of being difficult to read it will likely turn into a dirty mess.
 
 ```scss
 // Bad
-```
+.menu .menu-item > .link h1 {
+  font-face: Comic Sans;
+}
 
+// Good
+.link h1 {
+  font-face: Helvetica;
+}
+
+// Good
+.link-title {
+  font-face: serif;
+}
+```
 
 ## Sass and Compass
 
@@ -288,6 +301,42 @@ $DEFAULT_BACKGROUND: fuchsia !default;
   background: blue;
 }
 ↵
+```
+
+### Inline blocks
+
+* Only selectors with a single property are allowed to be declared inline, add line breaks if there are more than a single one.
+
+```scss
+// Bad
+.section { cursor: pointer; text-align: center; }
+
+// Good
+.section { cursor: default; }
+
+// Good
+.section {
+  text-align: left;
+  vertical-align: middle;
+}
+```
+
+### Multiple selectors
+
+* When targeting multiple selectors break each one in a new line.
+
+```scss
+// Bad
+.footer, .header, .main {
+  display: block;
+}
+
+// Good
+.footer,
+.header,
+.main {
+  margin: 0 auto;
+}
 ```
 
 ## Best practices
