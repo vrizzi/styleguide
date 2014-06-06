@@ -1,5 +1,7 @@
 # `.magnetis {}`
 
+Magnetis Stylesheet code styleguide.
+
 ## Table of contents
 
 * [Disclaimer](#disclaimer)

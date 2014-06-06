@@ -1,6 +1,6 @@
 # `magnetis();`
 
-Magnetis JavaScript code styleguide
+Magnetis JavaScript code styleguide.
 
 ## Table of contents
 
