@@ -1,11 +1,6 @@
 //
-// This style guide is a mix between Idiomatic rules and Douglas Crockford's style guide rules.
-//
-// Idiomatic: https://github.com/rwldrn/idiomatic.js/
-// Douglas Crockford's style guide: http://javascript.crockford.com/code.html
-//
-// Rafael Rinaldi (rafaelrinaldi.com)
-// 2013-07-15
+// Magnetis JavaScript linter rules.
+// https://github.com/magnetis/styleguide
 //
 {
 
