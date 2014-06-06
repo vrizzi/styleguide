@@ -38,6 +38,4 @@ The idea is to have a common place to look for and to enforce the same code stan
 
 ## Discussion :busts_in_silhouette:
 
-:deciduous_tree: :smile: :sunny: :sunglasses: :tophat:
-
-**This is a living project** so you don't need to agree with everything presented by the documents. Feel free to [open an issue](../../issues) to discuss changes and whatnot.
+:deciduous_tree: **This is a living project** :sunny: so you don't need to agree with everything presented by the documents. Feel free to [open an issue](../../issues) to discuss changes and whatnot.
