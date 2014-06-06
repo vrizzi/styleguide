@@ -32,9 +32,9 @@ The idea is to have a common place to look for and to enforce the same code stan
 
 ## Styleguides :open_file_folder:
 
-### * [JavaScript](/JavaScript.md)
-### * [Stylesheet](/Stylesheet.md)
-### * [Markup](/Markup.md)
+* <big>**[JavaScript](/JavaScript.md)**</big>
+* <big>**[Stylesheet](/Stylesheet.md)**</big>
+* <big>**[Markup](/Markup.md)**</big>
 
 ## Discussion :busts_in_silhouette:
 
