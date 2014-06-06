@@ -1,7 +1,8 @@
-# JavaScript code styleguide
+# `magnetis();`
 
 ## Table of contents
 
+* [Disclaimer](#disclaimer)
 * [Semicolons](#semicolons)
 * [Strict mode](#strict-mode)
 * [Context and closures](#context-and-closures)
@@ -62,6 +63,12 @@
   * [Styleguides](#styleguides)
   * [Articles and blog posts](#articles-and-blog-posts)
   * [Tools](#tools)
+
+## Disclaimer
+
+This document is heavily inspired by [jQuery Style Guide](http://contribute.jquery.org/style-guide/js), [idiomatic.js](https://github.com/rwaldron/idiomatic.js) and [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Semicolons
 
@@ -986,12 +993,6 @@ FooBar.prototype.doStuff(value) {
 **[⬆ back to top](#table-of-contents)**
 
 ## Links
-
-### Styleguides
-
-* [jQuery](http://contribute.jquery.org/style-guide/js)
-* [idiomatic.js](https://github.com/rwaldron/idiomatic.js)
-* [Airbnb](https://github.com/airbnb/javascript)
 
 ### Articles and blog posts
 
