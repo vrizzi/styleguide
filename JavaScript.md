@@ -1004,5 +1004,6 @@ FooBar.prototype.doStuff(value) {
 * [JSHint Plugins](http://www.jshint.com/install)
 * [esformatter](https://github.com/millermedeiros/esformatter)
 * [esformatter Plugins](https://github.com/piuccio/sublime-esformatter)
+* [vim-esformatter](https://gist.github.com/nisaacson/6939960)
 
 **[⬆ back to top](#table-of-contents)**
