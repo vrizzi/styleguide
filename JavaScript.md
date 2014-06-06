@@ -1,4 +1,5 @@
 # `magnetis();`
+> Magnetis JavaScript code styleguide
 
 ## Table of contents
 
