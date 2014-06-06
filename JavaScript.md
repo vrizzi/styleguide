@@ -1008,4 +1008,4 @@ FooBar.prototype.doStuff(value) {
 * [esformatter Plugins](https://github.com/piuccio/sublime-esformatter)
 * [vim-esformatter](https://gist.github.com/nisaacson/6939960)
 
-**[⬆ back to top](#table-of-contents)**
+**[⬅ back to main](../)**&nbsp;&nbsp;&nbsp;&nbsp;**[⬆ back to top](#table-of-contents)**
