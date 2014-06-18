@@ -579,7 +579,7 @@ var currentStatus;
 
 // Bad
 function status(val) {
-  if(val) {
+  if (val) {
     currentStatus = val;
   }
   
@@ -679,19 +679,19 @@ var userName = getUserInfo('name');
 
 ```js
 // Bad
-if(false)
+if (false)
   return;
-	
-// Bad	
-if(false) { return false; }
+
+// Bad
+if (false) { return false; }
 
 // Good
-if(true) {
+if (true) {
   return true;
 }
 
 // Good
-if(true) {
+if (true) {
   return true;
 } else {
   return false;
