@@ -554,7 +554,7 @@ $DEFAULT_BACKGROUND: fuchsia !default;
 
 * States should indicate a state, as the name suggests. Always start states with "is", "has", "should" or "was".
 
-```scsss
+```scss
 // Bad
 .logo.logoHidden {
   opacity: 0;
