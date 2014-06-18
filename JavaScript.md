@@ -396,19 +396,26 @@ var errorMessage = 'This is a super long error that was thrown because ' +
 
 ### String conversion
 
-* To convert any value to string, concats its value to an empty string.
+* To convert objects to string, use the `toString()` method:
 
 ```js
-// Bad
-var value = 42;
-
-_.toString(value);
-
-// Bad
+// Good
 value.toString();
+```
+
+* The conversion with `toString()` does not work with `null` and `undefined` values.
+To convert any value to string, concats its value to an empty string. This is useful when you don't care about the value of the conversion (ex: in a logging or tracking system).
+In case you convert a `null` value, it will transform into `"null"`. The same rule is applied to `undefined` values.
+
+```js
+var value = 42;
 
 // Good
 value += '';
+
+var empty;
+
+empty += ''; // #=> "undefined"
 ```
 
 **[⬆ back to top](#table-of-contents)**
