@@ -999,6 +999,7 @@ FooBar.prototype.doStuff(value) {
 ### Articles and blog posts
 
 * [It’s time to start using JavaScript strict mode](http://www.nczonline.net/blog/2012/03/13/its-time-to-start-using-javascript-strict-mode)
+* [Why is it recommended to have empty line in the end of file?](http://stackoverflow.com/questions/2287967/why-is-it-recommended-to-have-empty-line-in-the-end-of-file)
 
 ### Tools
 
