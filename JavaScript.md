@@ -60,7 +60,7 @@ Magnetis JavaScript code styleguide.
     * [Local variables](#local-variables)
     * [Property](#property)
 * [Best practices](#best-practices)
-	* [jQuery](#jquery) 
+	* [jQuery](#jquery)
 * [Links](#links)
   * [Styleguides](#styleguides)
   * [Articles and blog posts](#articles-and-blog-posts)
@@ -115,10 +115,10 @@ function doSomething() {
 // Good
 (function() {
   'use strict';
-	
+
   function doSomething() {
   }
-	
+
   function doSomethingElse() {
   }
 })();
@@ -156,7 +156,7 @@ var Module = (function() {
   function Module() {
     // magic happens here
   }
-	
+
   return Module;
 })();
 ```
@@ -192,7 +192,7 @@ var name = 'John',
 	country,
 	age = 42,
 	email;
-	
+
 // Good
 var country,
 	email,
@@ -210,12 +210,12 @@ var country,
 var once
 	, upon
 	, aTime;
-	
+
 // Good
 var once,
 	upon,
 	aTime;
-	
+
 // Bad
 var user = {
 	name: 'John',
@@ -513,7 +513,7 @@ var _name = 'Baz';
 // Bad
 function() {
   var that = this;
-  
+
   return function() {
     console.log(that);
   }
@@ -522,7 +522,7 @@ function() {
 // Bad
 function() {
   var _this = this;
-  
+
   return function() {
     console.log(this);
   }
@@ -531,7 +531,7 @@ function() {
 // Good
 function() {
   var self = this;
-  
+
   return function() {
     console.log(self);
   }
@@ -548,7 +548,7 @@ var ready = true,
 	animate = true,
 	started = false,
 	animation = true;
-	
+
 // Good
 var isReady = true,
 	shouldAnimate = true,
@@ -582,7 +582,7 @@ function status(val) {
   if (val) {
     currentStatus = val;
   }
-  
+
   return currentStatus;
 }
 
@@ -1013,6 +1013,9 @@ FooBar.prototype.doStuff(value) {
 
 * [JSHint](http://www.jshint.com)
 * [JSHint Plugins](http://www.jshint.com/install)
+* [SublimeLinter](http://www.sublimelinter.com)
+* [SublimeLinter-jshint](https://github.com/SublimeLinter/SublimeLinter-jshint)
+* [How To Use SublimeLinter 3 (video)](http://youtu.be/u6fvJRao-E4)
 * [esformatter](https://github.com/millermedeiros/esformatter)
 * [esformatter Plugins](https://github.com/piuccio/sublime-esformatter)
 * [vim-esformatter](https://gist.github.com/nisaacson/6939960)

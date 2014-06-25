@@ -2,58 +2,48 @@
 // Magnetis JavaScript linter rules.
 // https://github.com/magnetis/styleguide
 //
+// JSHint documentation:
+// http://www.jshint.com/docs/options
+//
 {
-
     // Custom globals
-    "predef": ["define", "require"],
+    "predef": ["Module"],
 
-    // Style guide
-    "boss": false,
+    // Force variables to be defined with camelCase or CONSTANT notation
     "camelcase": true,
-    "curly": true,
-    "debug": false,
-    "devel": false,
-    "eqeqeq": true,
-    "evil": true,
-    "expr": true, // Allow ternaries to call methods
-    "forin": false,
-    "immed": true,
-    "laxbreak": false,
-    "maxlen": 80,
-    "newcap": true,
-    "noarg": true,
-    "noempty": false,
-    "nomen": false,
-    "nonew": false,
-    "onevar": true, // Legacy
-    "plusplus": false,
-    "quotmark": "single",
-    "regexp": false, // Allow native regular-expression syntax
-    "strict": false, // Doesn't require 'strict' pragma to be present
-    "sub": true,
-    "trailing": false,
-    "undef": true,
-    "unused": true,
-    "white": true,
 
-    // Allow tabs and white spaces to be mixed
-    "-W099": true,
-    "smarttabs": true,
-    "white": false,
+    // Always close blocks with curly braces
+    "curly": true,
+
+    // Strict equality please
+    "eqeqeq": true,
+
+    // Doesn't overriding native objects prototype methods
+    "freeze": true,
+
+    // Immediate functions should be wrapped within parenthesis
+    "immed": true,
+
+    // Indentation is serious business
+    "indent": 2,
+
+    // Always define variables before using them
+    "latedef": true,
+
+    // Make sure that constructors follow PascalCase notation
+    "newcap": true,
+
+    // Prohibits the use of `arguments.caller` and `arguments.callee`
+    "noarg": true,
+
+    // Allow ternaries to call methods
+    "expr": true,
+
+    // Require strict pragma to be set
+    "strict": true,
 
     // Environment parameters
     "browser": true,
-    "couch": false,
-    "devel": false,
-    "dojo": false,
-    "jquery": false,
-    "mootools": false,
-    "node": true,
-    "nonstandard": false,
-    "prototypejs": false,
-    "rhino": false,
-    "wsh": true,
-
-    // Undocumented options
-    "maxerr": 100
+    "jquery": true,
+    "nonstandard": true
 }
