@@ -1,11 +1,17 @@
 //
-// Magnetis JavaScript linter rules.
+// Magnetis JSHint rules.
+//
+// They match our code guidelines:
 // https://github.com/magnetis/styleguide
 //
 // JSHint documentation:
 // http://www.jshint.com/docs/options
 //
 {
+    // ------------------------------------------------------------
+    // Enforcing
+    // ------------------------------------------------------------
+
     // Custom globals
     "predef": ["Module"],
 
@@ -36,14 +42,50 @@
     // Prohibits the use of `arguments.caller` and `arguments.callee`
     "noarg": true,
 
-    // Allow ternaries to call methods
-    "expr": true,
+    // Enforce the use of single quotation mark everywhere
+    "quotmark": "single",
+
+    // Prohibits the use of non declared variables
+    "undef": true,
+
+    // Warns when there are variables that are not in use
+    "unused": true,
 
     // Require strict pragma to be set
     "strict": true,
 
-    // Environment parameters
+    // Warns when there are trailing whitespaces on the code
+    "trailing": true,
+
+    // ------------------------------------------------------------
+    // Relaxing
+    // ------------------------------------------------------------
+
+    // Doesn't complain about `null` comparisons
+    "eqnull": true,
+
+    // `eval()` is evil!
+    "evil": true,
+
+    // Allow ternaries to call methods
+    "expr": true,
+
+    // Doesn't allow "weird" constructor calls
+    "supernew": true,
+
+    // ------------------------------------------------------------
+    // Environment
+    // ------------------------------------------------------------
+
+    // Define globals exposed by modern browsers
     "browser": true,
+
+    // Define globals used to debug such as `console` and `alert`
+    "devel": true,
+
+    // Define globals exposed by jQuery
     "jquery": true,
+
+    // Define widely adopted globals such as `escape` and `unescape`
     "nonstandard": true
 }
