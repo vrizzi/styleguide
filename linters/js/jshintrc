@@ -1,8 +1,8 @@
 //
-// Magnetis JavaScript linter rules.
+// Magnetis JavaScript linter rules
 // https://github.com/magnetis/styleguide
 //
-// JSHint documentation:
+// JSHint documentation
 // http://www.jshint.com/docs/options
 //
 {
