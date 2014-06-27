@@ -68,11 +68,10 @@ linters:
 
   MergeableSelector:
     enabled: true
-    force_nesting: true
+    force_nesting: false
 
   NameFormat:
-    enabled: true
-    convention: hyphenated_lowercase
+    enabled: false
 
   PlaceholderInExtend:
     enabled: false
@@ -132,7 +131,4 @@ linters:
     enabled: true
 
   Compass::*:
-    enabled: true
-
-  Compass::PropertyWithMixin
-    enabled: true
+    enabled: false
