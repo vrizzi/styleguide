@@ -51,9 +51,10 @@ This document is inspired by [Mark Otto's Code Guide](http://mdo.github.io/code-
 ## Introduction
 
 * To write our stylesheets we use methodologies and tools that you need to spend some time and get familiar with:
-	1. We follow some rules specified by [SMACSS](http://smacss.com) that enforces a more modular approach of writing components.
-	2. We use [Sass](http://sass-lang.com) as a pre-processor of our CSS code.
+	1. We use a mix of rules specified by [SMACSS](http://smacss.com), [BEM](http://bem.info) and [SUIT](http://suitcss.github.io) for a more modular approach of writing components.
+	2. We use [Sass](http://sass-lang.com) with SCSS syntax as a pre-processor of our CSS code.
 	3. We use [Compass](http://compass-style.org) to help with things like vendor prefixes and spritesheet generation.
+  4. Haters gonna hate.
 
 **[⬆ back to top](#table-of-contents)**
 
