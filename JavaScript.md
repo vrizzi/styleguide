@@ -179,8 +179,8 @@ var baz = 'Baz';
 
 // Good
 var foo = 'Foo',
-  bar = 'Bar',
-  baz = 'Baz';
+    bar = 'Bar',
+    baz = 'Baz';
 ```
 
 ### Order
@@ -190,17 +190,17 @@ var foo = 'Foo',
 ```js
 // Bad
 var name = 'John',
-  surname = 'Doe',
-  country,
-  age = 42,
-  email;
+    surname = 'Doe',
+    country,
+    age = 42,
+    email;
 
 // Good
 var country,
-  email,
-  name = 'John',
-  surname = 'Doe',
-  age = 42;
+    email,
+    name = 'John',
+    surname = 'Doe',
+    age = 42;
 ```
 
 ### Style
@@ -215,8 +215,8 @@ var once
 
 // Good
 var once,
-  upon,
-  aTime;
+    upon,
+    aTime;
 
 // Bad
 var user = {
@@ -606,15 +606,15 @@ function() {
 ```js
 // Bad
 var ready = true,
-  animate = true,
-  started = false,
-  animation = true;
+    animate = true,
+    started = false,
+    animation = true;
 
 // Good
 var isReady = true,
-  shouldAnimate = true,
-  wasStarted = true,
-  hasAnimation = true;
+    shouldAnimate = true,
+    wasStarted = true,
+    hasAnimation = true;
 ```
 
 * When naming a Boolean function, it should start with "is".
