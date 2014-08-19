@@ -220,7 +220,7 @@ var once,
 
 // Bad
 var user = {
-  name: 'John',
+  name: 'John'
   , surname: 'Doe'
   , age: 42
 };
