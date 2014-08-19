@@ -44,3 +44,9 @@ Inside Magnetis we have people using Vim, Sublime Text and TextMate. We make use
 
 :deciduous_tree: **This is a living project** :sunny: so you don't need to agree with everything presented by the documents.
 Feel free to [open an issue](../../issues) to discuss changes and whatnot.
+
+## License
+
+MIT License. Copyright 2014 Magnetis.
+
+You are not granted rights or licenses to the trademarks of the Magnetis, including without limitation the Magnetis logo.
