@@ -50,3 +50,7 @@ Feel free to [open an issue](../../issues) to discuss changes and whatnot.
 MIT License. Copyright 2014 Magnetis.
 
 You are not granted rights or licenses to the trademarks of the Magnetis, including without limitation the Magnetis logo.
+
+---
+
+Made with :heart: at [Magnetis](http://magnetis.com.br)
