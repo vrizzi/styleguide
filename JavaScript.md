@@ -26,6 +26,8 @@ Magnetis JavaScript code styleguide.
   * [String concatenation](#string-concatenation)
   * [Long strings](#long-strings)
   * [String conversion](#string-conversion)
+* [Functions](#functions)
+  * [Function arguments](#function-arguments)
 * [Naming conventions](#naming-conventions)
   * [Naming functions](#naming-functions)
   * [Naming constructors](#naming-constructors)
@@ -60,7 +62,7 @@ Magnetis JavaScript code styleguide.
     * [Local variables](#local-variables)
     * [Property](#property)
 * [Best practices](#best-practices)
-	* [jQuery](#jquery)
+  * [jQuery](#jquery)
 * [Links](#links)
   * [Styleguides](#styleguides)
   * [Articles and blog posts](#articles-and-blog-posts)
@@ -68,13 +70,13 @@ Magnetis JavaScript code styleguide.
 
 ## Disclaimer
 
-This document is heavily inspired by [jQuery Style Guide](http://contribute.jquery.org/style-guide/js), [idiomatic.js](https://github.com/rwaldron/idiomatic.js) and [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
+This document is inspired by [jQuery Style Guide](http://contribute.jquery.org/style-guide/js), [idiomatic.js](https://github.com/rwaldron/idiomatic.js) and [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
 
 **[⬆ back to top](#table-of-contents)**
 
 ## Semicolons
 
-* Yes, please!
+* Yes, please! [ASI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Automatic_semicolon_insertion) is very complicated, don't rely on it.
 
 ```js
 // Bad
@@ -177,8 +179,8 @@ var baz = 'Baz';
 
 // Good
 var foo = 'Foo',
-	bar = 'Bar',
-	baz = 'Baz';
+  bar = 'Bar',
+  baz = 'Baz';
 ```
 
 ### Order
@@ -188,17 +190,17 @@ var foo = 'Foo',
 ```js
 // Bad
 var name = 'John',
-	surname = 'Doe',
-	country,
-	age = 42,
-	email;
+  surname = 'Doe',
+  country,
+  age = 42,
+  email;
 
 // Good
 var country,
-	email,
-	name = 'John',
-	surname = 'Doe',
-	age = 42;
+  email,
+  name = 'John',
+  surname = 'Doe',
+  age = 42;
 ```
 
 ### Style
@@ -208,26 +210,26 @@ var country,
 ```js
 // Bad (OMG, really bad!)
 var once
-	, upon
-	, aTime;
+  , upon
+  , aTime;
 
 // Good
 var once,
-	upon,
-	aTime;
+  upon,
+  aTime;
 
 // Bad
 var user = {
-	name: 'John',
-	, surname: 'Doe'
-	, age: 42
+  name: 'John',
+  , surname: 'Doe'
+  , age: 42
 };
 
 // Good
 var user = {
-	name: 'John',
-	surname: 'Doe',
-	age: 42
+  name: 'John',
+  surname: 'Doe',
+  age: 42
 };
 ```
 
@@ -270,7 +272,7 @@ var baz = {
 
 ### Object keys
 
-* Use :camel: camelCase when naming object keys
+* Use :camel: camelCase when naming object keys when possible.
 
 ```js
 // Bad
@@ -287,6 +289,37 @@ var user = {
   hasChildren: false,
   isUnderage: false,
   age: 42
+};
+```
+
+* If you need to use quotes to wrap your keys for any reason, be consistent about it:
+
+```js
+// Bad
+var config = {
+  development: true,
+  'markdown-plugin': true,
+  shouldIgnoreManifest: false,
+  PersistData: true,
+  enforcenamespace: true
+};
+
+// Good
+var config = {
+  'development': true,
+  'markdown-plugin': true,
+  'should-ignore-manifest': false,
+  'persist-data': true,
+  'enforce-namespace': true
+};
+
+// Good
+var config = {
+  development: true,
+  markdownPlugin: true,
+  shouldIgnoreManifest: false,
+  persistData: true,
+  enforceNamespace: true
 };
 ```
 
@@ -397,12 +430,7 @@ var errorMessage = 'This is a super long error that was thrown because ' +
 
 ### String conversion
 
-* To convert objects to string, use the `toString()` method:
-
-```js
-// Good
-value.toString();
-```
+* To convert objects to string, use the `toString()` method.
 
 * The conversion with `toString()` does not work with `null` and `undefined` values.
 To convert any value to string, concats its value to an empty string. This is useful when you don't care about the value of the conversion (ex: in a logging or tracking system).
@@ -416,10 +444,42 @@ value += '';
 
 var empty;
 
-empty += ''; // #=> "undefined"
+empty += ''; // "undefined"
 ```
 
 **[⬆ back to top](#table-of-contents)**
+
+## Functions
+
+### Function arguments
+
+* Whenever you have more than 3 arguments being passed to a function it's preferable to use an object instead.
+
+```js
+// Bad
+
+// Too many arguments
+function setUser(firstName, lastName, age, gender, occupation) {
+  // do stuff
+}
+
+setUser('Jon', 'Snow', 25, 'Male', 'Nights-watcher');
+
+// Good
+
+// Use a config/options object instead
+function setUser(user) {
+  // do stuff
+}
+
+setUser({
+  firstName: 'Jon',
+  lastName: 'Snow',
+  age: 25,
+  gender: 'Male',
+  occupation: 'Nights-watcher'
+});
+```
 
 ## Naming conventions
 
@@ -507,7 +567,7 @@ var _name = 'Baz';
 
 ### Referencing `this`
 
-* When saving a reference to `this` use `self`.
+* When making a reference to `this` name it as `self`.
 
 ```js
 // Bad
@@ -545,15 +605,15 @@ function() {
 ```js
 // Bad
 var ready = true,
-	animate = true,
-	started = false,
-	animation = true;
+  animate = true,
+  started = false,
+  animation = true;
 
 // Good
 var isReady = true,
-	shouldAnimate = true,
-	wasStarted = true,
-	hasAnimation = true;
+  shouldAnimate = true,
+  wasStarted = true,
+  hasAnimation = true;
 ```
 
 * When naming a Boolean function, it should start with "is".
@@ -639,8 +699,8 @@ var menu = $('.js-navigation-menu');
 
 ```js
 var user = {
-	name: 'John',
-	age: 42
+  name: 'John',
+  age: 42
 };
 
 // Bad
@@ -654,8 +714,8 @@ var userAge = user.age;
 
 ```js
 var user = {
-	name: 'John',
-	age: 42
+  name: 'John',
+  age: 42
 };
 
 function getUserInfo(info) {
@@ -702,30 +762,48 @@ if (true) {
 
 ## Comments
 
-* Use `/** ... **/` for multiline comments.
+* Don't make trivial and obvious comments, be concise about it. If you caught yourself writing too much documentation for your code, consider a pair programming because you're likely over engineering it.
+
+* Feel free to use markdown syntax on code comments.
+
+* No need to use JSDoc syntax since we don't automatically generate documentation.
+
+* Using `FIXME`, `TODO` and `NOTE` tags can help other developers understand and maintain your code. You can use it as you want.
+
+* Use documentation block syntax followed by a newline for multiline comments. There are [tools](#tools) available to make it really easy.
 
 ```js
 // Bad
 
-// this method parses a string
-// based on the given name
-function parse(name) {
-  return '';
-}
+// Used to match `RegExp` special characters.
+// See this [article on `RegExp` characters](http://www.regular-expressions.info/characters.html#special)
+// for more details.
+
+var matchSpecialChars = /[.*+?^${}()|[\]\/\\]/g;
+
+// Bad
+
+/*
+Used to match `RegExp` special characters.
+See this [article on `RegExp` characters](http://www.regular-expressions.info/characters.html#special)
+for more details.
+*/
+
+var matchSpecialChars = /[.*+?^${}()|[\]\/\\]/g;
 
 // Good
 
 /**
- * This method parses a string
- * based on the given name
- */
+* Used to match `RegExp` special characters.
+* See this [article on `RegExp` characters](http://www.regular-expressions.info/characters.html#special)
+* for more details.
+*/
 
-function parseString(name) {
-  return '';
-}
+var matchSpecialChars = /[.*+?^${}()|[\]\/\\]/g;
+
 ```
 
-* Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment.
+* Use `//` for single line comments. Place single line comments on a newline above the subject of the comment and add an empty line before the comment.
 
 ```js
 // Bad
@@ -754,8 +832,6 @@ function getType() {
   return type;
 }
 ```
-
-* Using `FIXME`, `TODO` and `NOTE` can help other developers understand and maintain your code. It's encouraged that you make use of them.
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -866,7 +942,7 @@ function setUser(name, surname, age) {
 
 ### Object declarations
 
-* In objects that have more than a single property you should break all properties in new lines.
+* In objects that have more than a single property you should break all properties into new lines.
 
 ```js
 // Bad
@@ -874,10 +950,20 @@ var user = {name: 'John', surname: 'Doe', age: 42};
 
 // Good
 var user = {
-	name: 'John',
-	surname: 'Doe',
-	age: 42
+  name: 'John',
+  surname: 'Doe',
+  age: 42
 };
+```
+
+* Add inner spaces when declaring inline objects.
+
+```js
+// Bad
+var app = {locale: 'pt-br'};
+
+// Good
+var app = { locale: 'pt-br' };
 ```
 
 ### Chaining
@@ -977,21 +1063,16 @@ object.hasOwnProperty(prop);
 
 * Do not start closures with semi-colons.
 
-* We encourage you to log important app states always when possible. For that you should follow the format of module/class, then method, then the message or value that you want to log separated by double colons `::`.
+* We encourage you to log important app events and changes in development mode only. Follow the format of `Module/ClassName :: method() :: message`.
 
 ```js
-function FooBar() {
+function App() {
+  console.log('App :: App instance created');
 }
 
-// Bad
-FooBar.prototype.doStuff(value) {
-  console.log('do stuff' + value);
-}
-
-// Good
-FooBar.prototype.doStuff(value) {
-  console.log('FooBar :: doStuff() ::', value);
-}
+App.prototype.bootstrap = function() {
+  console.log('App :: bootstrap() :: App was initialized');
+};
 ```
 
 ### jQuery
@@ -1008,16 +1089,17 @@ FooBar.prototype.doStuff(value) {
 
 * [It’s time to start using JavaScript strict mode](http://www.nczonline.net/blog/2012/03/13/its-time-to-start-using-javascript-strict-mode)
 * [Why is it recommended to have empty line in the end of file?](http://stackoverflow.com/questions/2287967/why-is-it-recommended-to-have-empty-line-in-the-end-of-file)
+* [Multiple var statements in JavaScript, not superfluous](http://benalman.com/news/2012/05/multiple-var-statements-javascript)
+* [Naming methods, properties and objects](http://blog.millermedeiros.com/naming-methods-properties-and-objects)
 
 ### Tools
 
+* [DocBlockr](https://sublime.wbond.net/packages/DocBlockr)
+* [tcomment_vim](https://github.com/tomtom/tcomment_vim)
 * [JSHint](http://www.jshint.com)
 * [JSHint Plugins](http://www.jshint.com/install)
 * [SublimeLinter](http://www.sublimelinter.com)
 * [SublimeLinter-jshint](https://github.com/SublimeLinter/SublimeLinter-jshint)
 * [How To Use SublimeLinter 3 (video)](http://youtu.be/u6fvJRao-E4)
-* [esformatter](https://github.com/millermedeiros/esformatter)
-* [esformatter Plugins](https://github.com/piuccio/sublime-esformatter)
-* [vim-esformatter](https://gist.github.com/nisaacson/6939960)
 
 **[⬅ back to main](../../)**&nbsp;&nbsp;&nbsp;&nbsp;**[⬆ back to top](#table-of-contents)**
