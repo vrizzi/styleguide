@@ -31,6 +31,15 @@ The documents present a set of rules to follow in order to make sure we write co
 * <big>**[Stylesheet](/Stylesheet.md)**</big>
 * <big>**[Markup](/Markup.md)**</big>
 
+## Linters
+
+Under `/linters` you will see configuration files we use to enforce the rules described on the styleguide via code linters.
+ATM we use [JSHint](http://www.jshint.com) for Javascript and [SCSS lint](https://github.com/causes/scss-lint) for Sass with SCSS syntax.
+
+## EditorConfig
+
+Inside Magnetis we have people using Vim, Sublime Text and TextMate. We make use of the awesome project [EditorConfig](http://editorconfig.org) to help us maintain consistent coding styles between these different editors. The rules are specified on `editorconfig` file.
+
 ## Discussion
 
 :deciduous_tree: **This is a living project** :sunny: so you don't need to agree with everything presented by the documents.
