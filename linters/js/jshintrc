@@ -1,7 +1,5 @@
 //
 // Magnetis JSHint rules
-//
-// They match our code guidelines
 // https://github.com/magnetis/styleguide
 //
 // JSHint documentation
@@ -13,7 +11,7 @@
     // ------------------------------------------------------------
 
     // Custom globals
-    "predef": ["Module"],
+    "globals": ["Module", "define", "require"],
 
     // Force variables to be defined with camelCase or CONSTANT notation
     "camelcase": true,
@@ -24,7 +22,7 @@
     // Strict equality please
     "eqeqeq": true,
 
-    // Doesn't overriding native objects prototype methods
+    // Doesn't allow overriding native objects prototype methods
     "freeze": true,
 
     // Immediate functions should be wrapped within parenthesis
