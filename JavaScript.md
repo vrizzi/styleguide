@@ -370,7 +370,8 @@ bar.length = 0;
 ### Array conversion
 
 * To convert an array-like object to an array, use `Array.slice`.
-* PS: you might want to do this because array-like objects (e.g {'0': 'hello', '1': 'there'} ) don't have methods like '.join()', for more information on this suject read [this article]('http://nfriedly.com/techblog/2009/06/advanced-javascript-objects-arrays-and-array-like-objects/')
+* You might want to do this because array-like objects (e.g `{'0': 'hello', '1': 'there'}` ) don't have methods like `.join()`,
+  for more information on this suject read [this article](http://nfriedly.com/techblog/2009/06/advanced-javascript-objects-arrays-and-array-like-objects/)
 
 ```js
 function argsToArray() {
