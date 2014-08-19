@@ -46,7 +46,7 @@ Magnetis Stylesheet code styleguide.
 
 ## Disclaimer
 
-This document is heavily inspired by [Mark Otto's Code Guide](http://mdo.github.io/code-guide/#css) and [Idiomatic CSS](https://github.com/necolas/idiomatic-css).
+This document is inspired by [Mark Otto's Code Guide](http://mdo.github.io/code-guide/#css) and [Idiomatic CSS](https://github.com/necolas/idiomatic-css).
 
 ## Introduction
 

@@ -31,7 +31,7 @@ Magnetis markup code styleguide.
 
 ## Disclaimer
 
-This document is heavily inspired by [Mark Otto's Code Guide](http://mdo.github.io/code-guide/#html), [Harry Roberts's coding style](http://csswizardry.com/2012/04/my-html-css-coding-style) and [Idiomatic HTML](https://github.com/necolas/idiomatic-html).
+This document is inspired by [Mark Otto's Code Guide](http://mdo.github.io/code-guide/#html), [Harry Roberts's coding style](http://csswizardry.com/2012/04/my-html-css-coding-style) and [Idiomatic HTML](https://github.com/necolas/idiomatic-html).
 
 **[⬆ back to top](#table-of-contents)**
 
