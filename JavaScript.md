@@ -251,7 +251,7 @@ var bar = {};
 
 ### Reserved words
 
-* Do not use [reserved words](http://es5.github.io/#x7.6.1) as keys. They can cause problems in older IE versions.
+* Avoid using [reserved words](http://es5.github.io/#x7.6.1) as keys. They can cause problems in older IE versions if not wrapped within quotes.
 
 ```js
 // Bad
