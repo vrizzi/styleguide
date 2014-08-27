@@ -10,8 +10,8 @@
     // Enforcing
     // ------------------------------------------------------------
 
-    // Custom globals
-    "globals": ["Module", "define", "require"],
+    // Predefined globals
+    "predef": ["Module", "define", "require", "requirejs"],
 
     // Force variables to be defined with camelCase or CONSTANT notation
     "camelcase": true,
