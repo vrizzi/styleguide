@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository holds the guidelines we follow to write the front-end code of Magnetis.
+This repository holds the guidelines we follow to write the code of Magnetis.
 The documents present a set of rules to follow in order to make sure we write consistent code.
 
 ## Quotes
