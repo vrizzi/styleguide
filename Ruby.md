@@ -3,18 +3,7 @@
 > Style is what separates the good from the great. <br/>
 > -- Bozhidar Batsov
 
-This Ruby style guide recommends best practices so that real-world Ruby
-programmers can write code that can be maintained by other real-world Ruby
-programmers. A style guide that reflects real-world usage gets used, and a
-style guide that holds to an ideal that has been rejected by the people it is
-supposed to help risks not getting used at all &ndash; no matter how good it is.
-
-The guide is separated into several sections of related rules. We've
-tried to add the rationale behind the rules (if it's omitted We've
-assumed that is pretty obvious).
-
-This style guide was inspired in the [The Ruby Style Guide](http://github.com/bbatsov/ruby-style-guide)
-by [Bozhidar Batsov](http://github.com/bbatsov).
+Magnetis Ruby code styleguide.
 
 ## Table of Contents
 
@@ -91,9 +80,7 @@ by [Bozhidar Batsov](http://github.com/bbatsov).
     [1, 2, 3].length
     ```
 
-* Indent `when` as deep as `case`. I know that many would disagree
-  with this one, but it's the style established in both the "The Ruby
-  Programming Language" and "Programming Ruby".
+* Indent `when` as deep as `case`.
 
     ```ruby
     case
@@ -171,10 +158,93 @@ by [Bozhidar Batsov](http://github.com/bbatsov).
 
 * Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the `def`.
-* Keep lines fewer than 100 characters.
+* Keep lines fewer than **100** characters.
 * Avoid trailing whitespace.
 
 ## Syntax
+
+* Avoid line continuation (\\) where not required. In practice, avoid using
+  line continuations at all.
+
+    ```ruby
+    # bad
+    result = 1 - \
+             2
+
+    # good (but still ugly as hell)
+    result = 1 \
+             - 2
+    ```
+
+* Using the return value of `=` (an assignment) is ok, but surround the
+  assignment with parentheses.
+
+    ```ruby
+    # good - shows intended use of assignment
+    if (v = array.grep(/foo/)) ...
+
+    # bad
+    if v = array.grep(/foo/) ...
+
+    # also good - shows intended use of assignment and has correct precedence.
+    if (v = self.next_value) == 'hello' ...
+    ```
+
+* Use `||=` freely to initialize variables.
+
+    ```ruby
+    # set name to Bozhidar, only if it's nil or false
+    name ||= 'Bozhidar'
+    ```
+
+* Don't use `||=` to initialize boolean variables. (Consider what
+would happen if the current value happened to be `false`.)
+
+    ```ruby
+    # bad - would set enabled to true even if it was false
+    enabled ||= true
+
+    # good
+    enabled = true if enabled.nil?
+    ```
+
+* Always run the Ruby interpreter with the `-w` option so it will warn
+you if you forget either of the rules above!
+
+* The new hash literal syntax is preferred in Ruby 1.9 when your hash keys are symbols.
+
+    ```ruby
+    # bad
+    hash = { :one => 1, :two => 2 }
+
+    # good
+    hash = { one: 1, two: 2 }
+    ```
+
+* Use `_` for unused method/block parameters.
+
+    ```ruby
+    # bad
+    result = hash.map { |k, v| v + 1 }
+
+    # good
+    result = hash.map { |_, v| v + 1 }
+    ```
+* Use `_` followed by a name for unused method/block parameters.
+
+    ```ruby
+    # bad
+    def calculate(value)
+      21 + 21
+    end
+
+    # good
+    def calculate(_value)
+      21 + 21
+    end
+    ```
+
+### Methods
 
 * Use `def` with parentheses when there are arguments. Omit the
   parentheses when the method doesn't accept any arguments.
@@ -189,11 +259,112 @@ by [Bozhidar Batsov](http://github.com/bbatsov).
      end
      ```
 
-* Never use `for`, unless you know exactly why. Most of the time iterators
-  should be used instead. `for` is implemented in terms of `each` (so
-  you're adding a level of indirection), but with a twist - `for`
-  doesn't introduce a new scope (unlike `each`) and variables defined
-  in its block will be visible outside it.
+* Omit parentheses around parameters for methods that are part of an
+  internal DSL (e.g. Rake, Rails, RSpec), methods that are with
+  "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
+  access methods. Use parentheses around the arguments of all other
+  method invocations.
+
+    ```ruby
+    class Person
+      attr_reader :name, :age
+
+      # omitted
+    end
+
+    temperance = Person.new('Temperance', 30)
+    temperance.name
+
+    puts temperance.age
+
+    x = Math.sin(y)
+    array.delete(e)
+    ```
+
+* Avoid `self` where not required. (It is only required when calling a self write accessor.)
+
+    ```ruby
+    # bad
+    def ready?
+      if self.last_reviewed_at > self.last_updated_at
+        self.worker.update(self.content, self.options)
+        self.status = :in_progress
+      end
+      self.status == :verified
+    end
+
+    # good
+    def ready?
+      if last_reviewed_at > last_updated_at
+        worker.update(content, options)
+        self.status = :in_progress
+      end
+      status == :verified
+    end
+    ```
+
+* As a corollary, avoid shadowing methods with local variables unless they are both equivalent.
+
+    ```ruby
+    class Foo
+      attr_accessor :options
+
+      # ok
+      def initialize(options)
+        self.options = options
+        # both options and self.options are equivalent here
+      end
+
+      # bad
+      def do_something(options = {})
+        unless options[:when] == :later
+          output(self.options[:message])
+        end
+      end
+
+      # good
+      def do_something(params = {})
+        unless params[:when] == :later
+          output(options[:message])
+        end
+      end
+    end
+    ```
+
+* Use spaces around the `=` operator when assigning default values to method parameters:
+
+    ```ruby
+    # bad
+    def some_method(arg1=:default, arg2=nil, arg3=[])
+      # do something...
+    end
+
+    # good
+    def some_method(arg1 = :default, arg2 = nil, arg3 = [])
+      # do something...
+    end
+    ```
+
+    While several Ruby books suggest the first style, the second is much more prominent
+    in practice (and arguably a bit more readable).
+
+* Never put a space between a method name and the opening parenthesis.
+
+    ```ruby
+    # bad
+    f (3 + 2) + 1
+
+    # good
+    f(3 + 2) + 1
+    ```
+
+* If the first argument to a method begins with an open parenthesis,
+  always use parentheses in the method invocation. For example, write
+`f((3 + 2) + 1)`.
+
+### Loops
+
+* Never use `for`, unless you know exactly why.
 
     ```ruby
     arr = [1, 2, 3]
@@ -206,6 +377,57 @@ by [Bozhidar Batsov](http://github.com/bbatsov).
     # good
     arr.each { |elem| puts elem }
     ```
+
+* Favor modifier `while/until` usage when you have a single-line
+  body.
+
+    ```ruby
+    # bad
+    while some_condition
+      do_something
+    end
+
+    # good
+    do_something while some_condition
+    ```
+
+* Favor `until` over `while` for negative conditions.
+
+    ```ruby
+    # bad
+    do_something while !some_condition
+
+    # good
+    do_something until some_condition
+    ```
+
+* Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
+  `{...}` for multi-line blocks (multiline chaining is always
+  ugly). Always use `do...end` for "control flow" and "method
+  definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
+  when chaining.
+
+    ```ruby
+    names = ['Bozhidar', 'Steve', 'Sarah']
+
+    # good
+    names.each { |name| puts name }
+
+    # bad
+    names.each do |name|
+      puts name
+    end
+
+    # good
+    names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
+
+    # bad
+    names.select do |name|
+      name.start_with?('S')
+    end.map { |name| name.upcase }
+    ```
+
+### Conditionals
 
 * Never use `then` for multi-line `if/unless`.
 
@@ -261,6 +483,8 @@ by [Bozhidar Batsov](http://github.com/bbatsov).
 
 * Never use `if x; ...`. Use the ternary operator instead.
 
+* Avoid multi-line `?:` (the ternary operator); use `if/unless` instead.
+
 * Use `when x then ...` for one-line cases. The alternative syntax
   `when x: ...` is removed in Ruby 1.9.
 
@@ -279,8 +503,6 @@ by [Bozhidar Batsov](http://github.com/bbatsov).
     # control flow
     document.saved? or document.save!
     ```
-
-* Avoid multi-line `?:` (the ternary operator); use `if/unless` instead.
 
 * Favor modifier `if/unless` usage when you have a single-line
   body. Another good alternative is the usage of control flow `and/or`.
@@ -351,81 +573,6 @@ by [Bozhidar Batsov](http://github.com/bbatsov).
     end
     ```
 
-* Favor modifier `while/until` usage when you have a single-line
-  body.
-
-    ```ruby
-    # bad
-    while some_condition
-      do_something
-    end
-
-    # good
-    do_something while some_condition
-    ```
-
-* Favor `until` over `while` for negative conditions.
-
-    ```ruby
-    # bad
-    do_something while !some_condition
-
-    # good
-    do_something until some_condition
-    ```
-
-* Omit parentheses around parameters for methods that are part of an
-  internal DSL (e.g. Rake, Rails, RSpec), methods that are with
-  "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
-  access methods. Use parentheses around the arguments of all other
-  method invocations.
-
-    ```ruby
-    class Person
-      attr_reader :name, :age
-
-      # omitted
-    end
-
-    temperance = Person.new('Temperance', 30)
-    temperance.name
-
-    puts temperance.age
-
-    x = Math.sin(y)
-    array.delete(e)
-    ```
-
-* Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
-  `{...}` for multi-line blocks (multiline chaining is always
-  ugly). Always use `do...end` for "control flow" and "method
-  definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
-  when chaining.
-
-    ```ruby
-    names = ['Bozhidar', 'Steve', 'Sarah']
-
-    # good
-    names.each { |name| puts name }
-
-    # bad
-    names.each do |name|
-      puts name
-    end
-
-    # good
-    names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
-
-    # bad
-    names.select do |name|
-      name.start_with?('S')
-    end.map { |name| name.upcase }
-    ```
-
-    Some will argue that multiline chaining would look OK with the use of {...}, but they should
-    ask themselves - is this code really readable and can't the blocks contents be extracted into
-    nifty methods?
-
 * Avoid `return` where not required for flow of control.
 
     ```ruby
@@ -437,184 +584,6 @@ by [Bozhidar Batsov](http://github.com/bbatsov).
     # good
     def some_method(some_arr)
       some_arr.size
-    end
-    ```
-
-* Avoid `self` where not required. (It is only required when calling a self write accessor.)
-
-    ```ruby
-    # bad
-    def ready?
-      if self.last_reviewed_at > self.last_updated_at
-        self.worker.update(self.content, self.options)
-        self.status = :in_progress
-      end
-      self.status == :verified
-    end
-
-    # good
-    def ready?
-      if last_reviewed_at > last_updated_at
-        worker.update(content, options)
-        self.status = :in_progress
-      end
-      status == :verified
-    end
-    ```
-
-* As a corollary, avoid shadowing methods with local variables unless they are both equivalent.
-
-    ```ruby
-    class Foo
-      attr_accessor :options
-
-      # ok
-      def initialize(options)
-        self.options = options
-        # both options and self.options are equivalent here
-      end
-
-      # bad
-      def do_something(options = {})
-        unless options[:when] == :later
-          output(self.options[:message])
-        end
-      end
-
-      # good
-      def do_something(params = {})
-        unless params[:when] == :later
-          output(options[:message])
-        end
-      end
-    end
-    ```
-
-* Use spaces around the `=` operator when assigning default values to method parameters:
-
-    ```ruby
-    # bad
-    def some_method(arg1=:default, arg2=nil, arg3=[])
-      # do something...
-    end
-
-    # good
-    def some_method(arg1 = :default, arg2 = nil, arg3 = [])
-      # do something...
-    end
-    ```
-
-    While several Ruby books suggest the first style, the second is much more prominent
-    in practice (and arguably a bit more readable).
-
-* Avoid line continuation (\\) where not required. In practice, avoid using
-  line continuations at all.
-
-    ```ruby
-    # bad
-    result = 1 - \
-             2
-
-    # good (but still ugly as hell)
-    result = 1 \
-             - 2
-    ```
-
-* Using the return value of `=` (an assignment) is ok, but surround the
-  assignment with parentheses.
-
-    ```ruby
-    # good - shows intended use of assignment
-    if (v = array.grep(/foo/)) ...
-
-    # bad
-    if v = array.grep(/foo/) ...
-
-    # also good - shows intended use of assignment and has correct precedence.
-    if (v = self.next_value) == 'hello' ...
-    ```
-
-* Use `||=` freely to initialize variables.
-
-    ```ruby
-    # set name to Bozhidar, only if it's nil or false
-    name ||= 'Bozhidar'
-    ```
-
-* Don't use `||=` to initialize boolean variables. (Consider what
-would happen if the current value happened to be `false`.)
-
-    ```ruby
-    # bad - would set enabled to true even if it was false
-    enabled ||= true
-
-    # good
-    enabled = true if enabled.nil?
-    ```
-
-* Avoid using Perl-style special variables (like `$0-9`, `$``,
-  etc. ). They are quite cryptic and their use in anything but
-  one-liner scripts is discouraged.
-
-* Never put a space between a method name and the opening parenthesis.
-
-    ```ruby
-    # bad
-    f (3 + 2) + 1
-
-    # good
-    f(3 + 2) + 1
-    ```
-
-* If the first argument to a method begins with an open parenthesis,
-  always use parentheses in the method invocation. For example, write
-`f((3 + 2) + 1)`.
-
-* Always run the Ruby interpreter with the `-w` option so it will warn
-you if you forget either of the rules above!
-
-* The new hash literal syntax is preferred in Ruby 1.9 when your hash keys are symbols.
-
-    ```ruby
-    # bad
-    hash = { :one => 1, :two => 2 }
-
-    # good
-    hash = { one: 1, two: 2 }
-    ```
-
-* The new lambda literal syntax is preferred in Ruby 1.9.
-
-    ```ruby
-    # bad
-    lambda = lambda { |a, b| a + b }
-    lambda.call(1, 2)
-
-    # good
-    lambda = ->(a, b) { a + b }
-    lambda.(1, 2)
-    ```
-
-* Use `_` for unused method/block parameters.
-
-    ```ruby
-    # bad
-    result = hash.map { |k, v| v + 1 }
-
-    # good
-    result = hash.map { |_, v| v + 1 }
-    ```
-* Use `_` followed by a name for unused method/block parameters.
-
-    ```ruby
-    # bad
-    def calculate(value)
-      21 + 21
-    end
-
-    # good
-    def calculate(_value)
-      21 + 21
     end
     ```
 
