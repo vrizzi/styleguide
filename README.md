@@ -25,6 +25,11 @@ The documents present a set of rules to follow in order to make sure we write co
 >Part of being a good steward to a successful project is realizing that writing code for yourself is a Bad Idea™. If thousands of people are using your code, then write your code for maximum clarity, not your personal preference of how to get clever within the spec.
 ><small>– _Idan Gazit_</small>
 
+&nbsp;
+
+> The only real difficulties in programming are cache invalidation and naming things.
+><small>- _Phil Karlton_</small>
+
 ## Styleguides
 
 * <big>**[Ruby](/Ruby.md)**</big>
